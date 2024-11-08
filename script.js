@@ -1,4 +1,4 @@
-let jogadores = [];
+let jogadores = JSON.parse(localStorage.getItem('jogadores')) || [];
 
 function adicionarJogador() {
     const nome = document.getElementById('nome').value;
@@ -7,6 +7,7 @@ function adicionarJogador() {
     if (nome && posicao) {
         jogadores.push({ nome, posicao });
         atualizarLista();
+        salvarJogadores();
         document.getElementById('nome').value = '';
         document.getElementById('posicao').value = '';
     }
@@ -15,6 +16,7 @@ function adicionarJogador() {
 function removerJogador(index) {
     jogadores.splice(index, 1);
     atualizarLista();
+    salvarJogadores();
 }
 
 function atualizarLista() {
@@ -77,4 +79,28 @@ function zerarLista() {
     atualizarLista();
     document.getElementById('time1').innerHTML = '';
     document.getElementById('time2').innerHTML = '';
+    salvarJogadores();
 }
+
+function salvarJogadores() {
+    localStorage.setItem('jogadores', JSON.stringify(jogadores));
+}
+
+// Inicialização do campo de seleção para posições
+function inicializarPosicoes() {
+    const posicaoSelect = document.getElementById('posicao');
+    const opcoes = [];
+
+    opcoes.forEach(opcao => {
+        const option = document.createElement('option');
+        option.value = opcao;
+        option.textContent = opcao;
+        posicaoSelect.appendChild(option);
+    });
+}
+
+// Chama a inicialização das posições ao carregar a página
+window.onload = () => {
+    inicializarPosicoes();
+    atualizarLista();
+};

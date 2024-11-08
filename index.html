@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-<title>Sorteio de Times</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <title>Sorteio de Times</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="img/logo-removebg-preview.png" alt="Logo" class="logo">
-            <h1>Sorteio de Times de Futebol</h1>
+            <img src="img/logo_time.png" alt="Logo" class="logo">
+            <h1>Sorteio de Times</h1>
         </header>
         <section class="form-section">
             <input type="text" id="nome" placeholder="Nome do Jogador">
-            <input type="text" id="posicao" placeholder="Posição">
-            <button onclick="adicionarJogador()">Adicionar Jogador</button>
-            <button onclick="zerarLista()">Zerar Lista</button>
+            <select id="posicao">
+                <option value="">Posição</option>
+                <option value="Defensor">Defensor</option>
+                <option value="Meio Campo">Meio Campo</option>
+                <option value="Atacante">Atacante</option>
+            </select>
+            <button class="btn-adicionar" onclick="adicionarJogador()">Adicionar Jogador</button>
+            <button class="btn-zerar" onclick="zerarLista()">Zerar Lista</button>
         </section>
         <section class="lista-jogadores">
             <h2>Jogadores</h2>
@@ -27,14 +32,14 @@
             <button onclick="sortearTimes()">Sortear Times</button>
         </section>
         <section class="resultado">
-            <h2>Times</h2>
+            <!-- <h2>Times</h2> -->
             <div class="times">
                 <div>
-                    <h3>Time 1</h3>
+                    <h3>Time A</h3>
                     <ul id="time1"></ul>
                 </div>
                 <div>
-                    <h3>Time 2</h3>
+                    <h3>Time B</h3>
                     <ul id="time2"></ul>
                 </div>
             </div>
