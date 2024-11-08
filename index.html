@@ -11,14 +11,18 @@
     <div class="container">
         <header>
             <img src="img/logo_time.png" alt="Logo" class="logo">
-            <h1>Sorteio de Times</h1>
         </header>
         <section class="form-section">
             <input type="text" id="nome" placeholder="Nome do Jogador">
             <select id="posicao">
                 <option value="">Posição</option>
+                <option value="Defensor">Goleiro</option>
                 <option value="Defensor">Defensor</option>
-                <option value="Meio Campo">Meio Campo</option>
+                <option value="Defensor">Lateral Esquerdo</option>
+                <option value="Defensor">Lateral Direito</option>
+                <option value="Defensor">Volante</option>
+                <option value="Meio Campo">Meia Esquerda</option>
+                <option value="Meio Campo">Meia Direita</option>
                 <option value="Atacante">Atacante</option>
             </select>
             <button class="btn-adicionar" onclick="adicionarJogador()">Adicionar Jogador</button>
@@ -32,19 +36,23 @@
             <button onclick="sortearTimes()">Sortear Times</button>
         </section>
         <section class="resultado">
-            <!-- <h2>Times</h2> -->
             <div class="times">
-                <div>
+                <div class="ab">
                     <h3>Time A</h3>
                     <ul id="time1"></ul>
                 </div>
-                <div>
+                <div class="ab">
                     <h3>Time B</h3>
                     <ul id="time2"></ul>
                 </div>
             </div>
         </section>
     </div>
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Sorteio de Times. Todos os direitos reservados.</p>
+        <p>Desenvolvido por Pedro Júnior - @SubliArte</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

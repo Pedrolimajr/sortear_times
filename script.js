@@ -61,18 +61,37 @@ function exibirTimes(time1, time2) {
     listaTime1.innerHTML = '';
     listaTime2.innerHTML = '';
 
-    time1.forEach(jogador => {
+    time1.forEach((jogador, index) => {
         const li = document.createElement('li');
         li.innerHTML = `${jogador.nome} (${jogador.posicao})`;
+        
+        // Criar o botão de remover
+        const btnRemover = document.createElement('button');
+        btnRemover.textContent = 'Remover';
+        btnRemover.onclick = () => removerJogador(index); // Chama a função de remover jogador
+        
+        // Adiciona o botão ao lado do nome do jogador
+        li.appendChild(btnRemover);
+        
         listaTime1.appendChild(li);
     });
 
-    time2.forEach(jogador => {
+    time2.forEach((jogador, index) => {
         const li = document.createElement('li');
         li.innerHTML = `${jogador.nome} (${jogador.posicao})`;
+
+        // Criar o botão de remover
+        const btnRemover = document.createElement('button');
+        btnRemover.textContent = 'Remover';
+        btnRemover.onclick = () => removerJogador(index); // Chama a função de remover jogador
+        
+        // Adiciona o botão ao lado do nome do jogador
+        li.appendChild(btnRemover);
+
         listaTime2.appendChild(li);
     });
 }
+
 
 function zerarLista() {
     jogadores = [];
