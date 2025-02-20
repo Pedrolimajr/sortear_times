@@ -1,33 +1,32 @@
-/* Tela do login */
-
+// Tela do login
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('config.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o arquivo JSON');
-            }
-            return response.json();
-        })
-        .then(config => {
-            document.getElementById('loginForm').addEventListener('submit', function(event) {
-                event.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-                const username = document.getElementById('username').value.trim();
-                const password = document.getElementById('password').value.trim();
-                const errorMessage = document.getElementById('errorMessage');
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorMessage = document.getElementById('errorMessage');
 
-                // Verifica se o nome de usuário e a senha estão corretos
-                if (username === config.Login && password === config.Senha) {
-                    errorMessage.textContent = '';
-                    window.location.assign('app.html'); // Redireciona para app.html
-                } else {
-                    errorMessage.textContent = 'Usuário ou senha incorretos!';
-                    errorMessage.style.color = 'red';
-                }
-            });
-        })
-        .catch(error => console.error('Erro ao carregar config.json:', error));
+        // Verifica se o nome de usuário e a senha estão corretos
+        if (username === "@pedrojunior" && password === "sorttimes@2024") {
+            errorMessage.textContent = '';
+            window.location.assign('app.html'); // Redireciona para app.html
+        } else {
+            errorMessage.textContent = 'Usuário ou senha incorretos!';
+            errorMessage.style.color = 'red';
+        }
+    });
+
+    // Funcionalidade de mostrar/esconder a senha
+    const togglePassword = document.getElementById('togglePassword');
+    togglePassword.addEventListener('click', function() {
+        const passwordField = document.getElementById('password');
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash'); // Alterna o ícone
+    });
 });
+
 
 
 /* Gerenciamento de jogadores */

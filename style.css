@@ -200,6 +200,7 @@ footer {
 }
 
 
+
 /* Tela de login */
 body {
     font-family: Arial, sans-serif;
@@ -209,10 +210,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background: linear-gradient(to bottom, #000000, #434343);
 }
-
+.logo_login{
+    max-width: 150px;
+    margin-bottom: 20px;
+}
 .login-container {
-    /* background-color: #fff; */
     background: linear-gradient(to right, #444e56, #6dd5fa, #636d7e);
     padding: 20px;
     border-radius: 8px;
@@ -224,6 +228,7 @@ body {
 .form-group {
     margin-bottom: 15px;
     text-align: left;
+    position: relative; /* Permite posicionar ícones dentro dos campos */
 }
 
 label {
@@ -234,10 +239,16 @@ label {
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 8px;
+    padding: 10px 40px; /* Aumenta o padding para dar espaço aos ícones */
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s; /* Transição suave para mudança de cor */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #28a745; /* Mudança de cor ao focar no campo */
 }
 
 button {
@@ -248,6 +259,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s; /* Transição suave para mudança de cor */
 }
 
 button:hover {
@@ -259,4 +271,20 @@ button:hover {
     margin-top: 10px;
     font-size: 14px;
     text-align: center;
+}
+
+/* Estilo para os ícones */
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 35px; /* Ajuste a posição do ícone */
+    font-size: 18px;
+    color: #888;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35px; /* Ajuste a posição do ícone */
+    cursor: pointer;
 }
