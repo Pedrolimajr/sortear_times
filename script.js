@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* Gerenciamento de jogadores */
+// Variáveis globais para armazenar os times sorteados
+let time1 = [];
+let time2 = [];
+
+// Gerenciamento de jogadores
 let jogadores = JSON.parse(localStorage.getItem('jogadores')) || [];
 
 function adicionarJogador() {
@@ -58,19 +63,23 @@ function atualizarLista() {
     jogadores.forEach((jogador, index) => {
         const li = document.createElement('li');
         li.textContent = `${jogador.nome} (${jogador.posicao})`;
-        
+
         const btnRemover = document.createElement('button');
-        btnRemover.textContent = 'Remover';
+        btnRemover.textContent = 'Remover ❌';
+        btnRemover.style.marginLeft = '10px';
+        btnRemover.style.backgroundColor = 'black';
+        btnRemover.style.width = '100px';
         btnRemover.onclick = () => removerJogador(index);
-        
+
         li.appendChild(btnRemover);
         listaJogadores.appendChild(li);
     });
 }
 
+// 🔥 Função para sortear os times
 function sortearTimes() {
-    const time1 = [];
-    const time2 = [];
+    time1 = [];
+    time2 = [];
     const posicoes = {};
 
     jogadores.forEach(jogador => {
@@ -86,38 +95,63 @@ function sortearTimes() {
         });
     }
 
-    exibirTimes(time1, time2);
+    exibirTimes();
 }
 
-function exibirTimes(time1, time2) {
+// 🔥 Exibir os times na tela
+function exibirTimes() {
     const listaTime1 = document.getElementById('time1');
     const listaTime2 = document.getElementById('time2');
 
     listaTime1.innerHTML = '';
     listaTime2.innerHTML = '';
 
-    time1.forEach(jogador => criarItemLista(listaTime1, jogador));
-    time2.forEach(jogador => criarItemLista(listaTime2, jogador));
+    time1.forEach((jogador, index) => criarItemLista(listaTime1, jogador, 'time1', index));
+    time2.forEach((jogador, index) => criarItemLista(listaTime2, jogador, 'time2', index));
 }
 
-function criarItemLista(lista, jogador) {
+// 🔥 Criar item da lista com botão de remover
+function criarItemLista(lista, jogador, time, index) {
     const li = document.createElement('li');
     li.textContent = `${jogador.nome} (${jogador.posicao})`;
+
+    const btnRemover = document.createElement('button');
+    btnRemover.textContent = 'Remover ❌';
+    btnRemover.style.marginLeft = '10px';
+    btnRemover.style.backgroundColor = 'black';
+    btnRemover.style.width = '100px';
+    btnRemover.onclick = () => removerDoTime(time, index);
+
+    li.appendChild(btnRemover);
     lista.appendChild(li);
 }
 
+// 🔥 Função para remover jogador do time correto
+function removerDoTime(time, index) {
+    if (time === 'time1') {
+        time1.splice(index, 1);
+    } else if (time === 'time2') {
+        time2.splice(index, 1);
+    }
+    exibirTimes(); // Atualiza a exibição dos times
+}
+
+// 🔥 Zerar tudo
 function zerarLista() {
     jogadores = [];
+    time1 = [];
+    time2 = [];
     atualizarLista();
-    document.getElementById('time1').innerHTML = '';
-    document.getElementById('time2').innerHTML = '';
+    exibirTimes();
     salvarJogadores();
 }
 
+// 🔥 Salvar jogadores no LocalStorage
 function salvarJogadores() {
     localStorage.setItem('jogadores', JSON.stringify(jogadores));
 }
 
+// 🔥 Inicializar opções de posição no `<select>`
 function inicializarPosicoes() {
     const posicaoSelect = document.getElementById('posicao');
     const opcoes = ['Goleiro', 'Defensor', 'Meio-Campo', 'Atacante'];
@@ -130,6 +164,7 @@ function inicializarPosicoes() {
     });
 }
 
+// 🔥 Carregar lista ao iniciar
 window.onload = () => {
     inicializarPosicoes();
     atualizarLista();
