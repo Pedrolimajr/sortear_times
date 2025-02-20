@@ -161,3 +161,25 @@ window.onload = () => {
     inicializarPosicoes(); // Inicializa as opções de posição.
     atualizarLista(); // Atualiza a lista de jogadores na interface.
 };
+
+
+/* Tela do login */
+
+fetch('config.json')
+    .then(response => response.json())
+    .then(config => {
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (username === config.USERNAME && password === config.PASSWORD) {
+                errorMessage.textContent = '';
+                window.location.href = 'app.html';
+            } else {
+                errorMessage.textContent = 'Usuário ou senha incorretos!';
+            }
+        });
+    });

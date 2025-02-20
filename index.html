@@ -3,56 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <title>Sorteio de Times</title>
+    <title>Tela de Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="img/logo_time.png" alt="Logo" class="logo">
-        </header>
-        <section class="form-section">
-            <input type="text" id="nome" placeholder="Nome do Jogador">
-            <select id="posicao">
-                <option value="">Posição</option>
-                <option value="Goleiro">Goleiro</option>
-                <option value="Defensor">Defensor</option>
-                <option value="Lateral Esquerdo">Lateral Esquerdo</option>
-                <option value="Lateral Direito">Lateral Direito</option>
-                <option value="Volante">Volante</option>
-                <option value="Meia Esquerda">Meia Esquerda</option>
-                <option value="Meia Direita">Meia Direita</option>
-                <option value="Atacante">Atacante</option>
-            </select>
-            <button class="btn-adicionar" onclick="adicionarJogador()">Adicionar Jogador</button>
-            <button class="btn-zerar" onclick="zerarLista()">Zerar Lista</button>
-        </section>
-        <section class="lista-jogadores">
-            <h2>Jogadores</h2>
-            <ul id="listaJogadores"></ul>
-        </section>
-        <section class="sorteio">
-            <button onclick="sortearTimes()">Sortear Times</button>
-        </section>
-        <section class="resultado">
-            <div class="times">
-                <div class="ab">
-                    <h3>Time A</h3>
-                    <ul id="time1"></ul>
-                </div>
-                <div class="ab">
-                    <h3>Time B</h3>
-                    <ul id="time2"></ul>
-                </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
             </div>
-        </section>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <!-- Elemento para exibir a mensagem de erro -->
+    <div id="errorMessage" class="error-message"></div>
+</div>
     </div>
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Sorteio de Times. Todos os direitos reservados.</p>
-        <p>Desenvolvido por Pedro Júnior - @SubliArte</p>
-    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
