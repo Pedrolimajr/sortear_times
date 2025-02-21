@@ -171,7 +171,7 @@ window.onload = () => {
 };
 
 
-/* Login com digital */
+/* Login com digital 
 async function autenticarPorDigital() {
     if (!window.PublicKeyCredential) {
         alert("Seu navegador não suporta autenticação por digital.");
@@ -200,3 +200,4 @@ async function autenticarPorDigital() {
 
 // 🔥 Chame essa função ao clicar no botão de login por digital
 document.getElementById("btnDigital").addEventListener("click", autenticarPorDigital);
+*/

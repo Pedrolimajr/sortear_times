@@ -300,9 +300,8 @@ button:hover {
 }
 
 
-/* Login com digital */
-
-#btnDigital {
+/* Login digital */
+/* #btnDigital {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -316,8 +315,6 @@ button:hover {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
     transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 15px;
-    
 }
 
 #btnDigital::before {
@@ -339,10 +336,10 @@ button:hover {
 
 #btnDigital:active {
     transform: scale(0.95);
-}
+} */
 
 /* Efeito de scanner */
-#btnDigital::after {
+/* #btnDigital::after {
     content: "";
     position: absolute;
     width: 40px;
@@ -353,9 +350,9 @@ button:hover {
     transform: translateX(-50%);
     border-radius: 2px;
     animation: scan 2s infinite linear;
-}
+} */
 
-@keyframes scan {
+/* @keyframes scan {
     0% {
         top: -10%;
     }
@@ -365,4 +362,4 @@ button:hover {
     100% {
         top: -10%;
     }
-}
+} */
