@@ -169,3 +169,34 @@ window.onload = () => {
     inicializarPosicoes();
     atualizarLista();
 };
+
+
+/* Login com digital */
+async function autenticarPorDigital() {
+    if (!window.PublicKeyCredential) {
+        alert("Seu navegador não suporta autenticação por digital.");
+        return;
+    }
+
+    try {
+        const credenciais = await navigator.credentials.get({
+            publicKey: {
+                challenge: new Uint8Array(32),
+                allowCredentials: [],
+                timeout: 60000,
+                userVerification: "required",
+            },
+        });
+
+        if (credenciais) {
+            alert("Autenticação bem-sucedida! ✅");
+            // Aqui você pode redirecionar para outra página ou liberar funcionalidades
+        }
+    } catch (error) {
+        console.error("Erro ao autenticar:", error);
+        alert("Falha na autenticação biométrica.");
+    }
+}
+
+// 🔥 Chame essa função ao clicar no botão de login por digital
+document.getElementById("btnDigital").addEventListener("click", autenticarPorDigital);
